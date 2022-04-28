@@ -1,5 +1,5 @@
 {
-  "name": "@mm/pdf2img",
+  "name": "mm-pdf2img",
   "version": "1.0.0",
   "private": false,
   "publishConfig": {
