@@ -1,4 +1,9 @@
-使用
+# 功能
+在浏览器中，把pdf文件转成img文件
+[] 支持转化成长图
+[] 无水印
+
+# 使用
 ````javascript
 import Pdf2Img from 'mm-pdf2img';
 const pdf2Img = new Pdf2Img();

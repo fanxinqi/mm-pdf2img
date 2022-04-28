@@ -39,8 +39,7 @@ class pdf2img implements Iconverter {
         const convasArray = await this.getImages(pdf);
         const mergedImage = this.mergeCanvas(convasArray);
         mergedImage.toBlob(function (blobObj) {
-          let file = new File([blobObj], this.sourceFile.name, { type: "png" });
-          resolve(file);
+          resolve(new File([blobObj], file?.name, { type: "png" }));
         });
       });
     });
