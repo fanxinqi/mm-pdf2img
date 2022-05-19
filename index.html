@@ -8,15 +8,15 @@
   </head>
   <body>
     <input type="file" name="" id="upload_pdf" />
-    <script src="./lib/bundle.js"></script>
+    <script src="./lib/index.js"></script>
     <img id="pre_img" />
     <script>
-      const Pdf2Img = convertAndDoSomething.default;
+      const Pdf2Img = mmpdf2img.default;
       const pdf2Img = new Pdf2Img();
 
       document.querySelector("#upload_pdf").onchange = function (e) {
         pdf2Img.parse(e.target.files[0]).then((file) => {
-          console.log(file);
+          console.log('xxx',file);
         });
       };
     </script>

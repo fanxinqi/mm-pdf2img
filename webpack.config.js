@@ -8,7 +8,7 @@ module.exports = {
     libraryTarget: 'umd',
     path: path.resolve(__dirname, 'lib'),
     globalObject: 'this',
-    library: 'convertAndDoSomething',
+    library: 'mmpdf2img',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
