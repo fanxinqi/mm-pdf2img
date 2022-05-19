@@ -49,8 +49,11 @@ class pdf2img implements Iconverter {
 
   private async readPdf(result: any) {
     const uint8array = new Uint8Array(result);
-    const pdf = await PDFJS.getDocument({ data: uint8array, cMapUrl: null })
-      .promise;
+    const pdf = await PDFJS.getDocument({
+      data: uint8array,
+      // cMapUrl: null,
+      // useWorkerFetch: false,
+    }).promise;
     return pdf;
   }
 
