@@ -1,5 +1,5 @@
-const PDFJS = require("pdfjs-dist");
-const pdfjsWorker = require("pdfjs-dist/build/pdf.worker.entry");
+const PDFJS = require("pdfjs-dist/legacy/build/pdf");
+const pdfjsWorker = require("pdfjs-dist/legacy/build/pdf.worker.entry");
 PDFJS.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 /**
