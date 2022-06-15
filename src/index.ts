@@ -61,12 +61,19 @@ class pdf2img implements Iconverter {
     const page = await pdf.getPage(this.currentPage);
     // 设置展示比例
     const scale = 1;
+    // Set dimensions to Canvas
+    var resolution = 4; // 决定pdf清晰度
     const viewport = page.getViewport(scale);
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
-    const renderContext = { canvasContext: ctx, viewport };
-    canvas.height = viewport.viewBox[3];
-    canvas.width = viewport.viewBox[2];
+    const renderContext = {
+      canvasContext: ctx,
+      viewport,
+      transform: [resolution, 0, 0, resolution, 0, 0],
+    };
+  
+    canvas.height = resolution * viewport.viewBox[3];
+    canvas.width = resolution * viewport.viewBox[2];
     ctx.scale(1, -1);
     ctx.translate(0, -canvas.height);
     await page.render(renderContext).promise;
