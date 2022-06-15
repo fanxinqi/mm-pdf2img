@@ -29,6 +29,11 @@ class pdf2img implements Iconverter {
     return p;
   }
 
+  private clean() {
+    this.targeCanvasArray = [];
+    this.currentPage = 1;
+  }
+
   public parse(file?: File) {
     if (file) {
       this.sourceFile = file;
@@ -38,7 +43,8 @@ class pdf2img implements Iconverter {
         const pdf = await this.readPdf(result);
         const convasArray = await this.getImages(pdf);
         const mergedImage = this.mergeCanvas(convasArray);
-        mergedImage.toBlob(function (blobObj) {
+        mergedImage.toBlob((blobObj) => {
+          this.clean();
           resolve(new File([blobObj], file?.name, { type: "png" }));
         });
       });
@@ -71,7 +77,7 @@ class pdf2img implements Iconverter {
       viewport,
       transform: [resolution, 0, 0, resolution, 0, 0],
     };
-  
+
     canvas.height = resolution * viewport.viewBox[3];
     canvas.width = resolution * viewport.viewBox[2];
     ctx.scale(1, -1);
