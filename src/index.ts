@@ -68,7 +68,7 @@ class pdf2img implements Iconverter {
     // 设置展示比例
     const scale = 1;
     // Set dimensions to Canvas
-    var resolution = 4; // 决定pdf清晰度
+    var resolution = 2; // 决定pdf清晰度
     const viewport = page.getViewport(scale);
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
