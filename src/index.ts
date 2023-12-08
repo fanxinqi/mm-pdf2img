@@ -78,10 +78,11 @@ class pdf2img implements Iconverter {
       transform: [resolution, 0, 0, resolution, 0, 0],
     };
 
-    canvas.height = resolution * viewport.viewBox[3];
-    canvas.width = resolution * viewport.viewBox[2];
-    ctx.scale(1, -1);
-    ctx.translate(0, -canvas.height);
+    canvas.height = Math.floor(resolution * viewport.height);
+    canvas.width = Math.floor(resolution * viewport.width);
+    canvas.style.width = Math.floor(viewport.width) + 'px';
+    canvas.style.height = Math.floor(viewport.height) + 'px';
+    
     await page.render(renderContext).promise;
     this.targeCanvasArray.push(canvas);
     if (this.currentPage < pdf.numPages) {
